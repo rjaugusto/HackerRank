@@ -1,0 +1,3 @@
+module HackerRank {
+	exports BirthdayCakeCandles;
+}
