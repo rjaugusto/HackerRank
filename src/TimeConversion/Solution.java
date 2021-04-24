@@ -3,35 +3,28 @@ package TimeConversion;
 public class Solution {
 
     static String timeConversion(String s) {
-    	String[] split = s.split(":");
-    	
-    	if(s.substring(8).equals("PM") && Integer.valueOf(split[0]) < 12) {
-    		
-    	Integer hora = 	Integer.valueOf(split[0]) + 12;
-    		
-    		return hora.toString() + ":" + split[1] + ":" +  split[2].split("")[0] + split[2].split("")[1];
-    	}
-    	
-    	if(s.substring(8).equals("AM")) {
-    		
-        	Integer hora = 	Integer.valueOf(split[0]) - 12;
-        	
-        	if(hora == 0) {
-        		return "0" + hora.toString() + ":" + split[1] + ":" +  split[2].split("")[0] + split[2].split("")[1];
-        	}
-        		
-        		return hora.toString() + ":" + split[1] + ":" +  split[2].split("")[0] + split[2].split("")[1];
-        	}
-    	Integer hora = 	Integer.valueOf(split[0]);
-    	
-		return hora.toString() + ":" + split[1] + ":" +  split[2].split("")[0] + split[2].split("")[1];
-    	
 
-    }
+    	StringBuilder string = new StringBuilder(s);
+		Integer firstPart = Integer.valueOf(string.substring(0,2));
+		String ampm =  string.substring(8,10);
+
+		if(ampm.equals("AM")){
+			if(firstPart == 12){
+				return "00" + string.substring(2,8);
+			}
+			return string.substring(0,8);
+		}else{
+			if(firstPart == 12){
+				return "12" + string.substring(2,8);
+			}
+			return firstPart + 12 + string.substring(2,8);
+		}
+
+	}
 
 
     public static void main(String[] args){
-        String result = timeConversion("04:59:59AM");
+        String result = timeConversion("12:45:54PM");
         System.out.println(result);
     }
 }
