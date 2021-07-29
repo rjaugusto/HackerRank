@@ -2,13 +2,16 @@ package DivisibleSumPairs;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.UnaryOperator;
 
 public class Solution {
 
     public static void main(String[] args) {
+        UnaryOperator<String> stringona = s-> s.toLowerCase();
 
-        List<Integer> integers = Arrays.asList(1, 3, 2, 6, 1, 2);
-        divisibleSumPairs(6, 3, integers);
+
+        //   List<Integer> integers = Arrays.asList(1, 3, 2, 6, 1, 2);
+        // divisibleSumPairs(6, 3, integers);
     }
 
     public static int divisibleSumPairs(int n, int k, List<Integer> ar) {
